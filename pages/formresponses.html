@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Responses</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Form Responses</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <table id="responses-table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Responses will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </footer>
+    <script>
+        const dataUrl = 'https://script.google.com/macros/s/AKfycbw0DWRtVwYD3wd7LxhzneuufEOCpx9tznZUdWFf38NzJGqD0cjSmKw6xyg-gnPTCuhTQg/exec';
+
+        async function fetchResponses() {
+            try {
+                const response = await fetch(dataUrl);
+                const data = await response.json();
+
+                // Populate table
+                const tableBody = document.querySelector('#responses-table tbody');
+                tableBody.innerHTML = ''; // Clear previous data if any
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.Email}</td>
+                        <td>${row.FirstName}</td>
+                        <td>${row.LastName}</td>
+                        <td>${row.Message}</td>
+                        <td>${row.Date}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Error fetching responses:', error);
+            }
+        }
+
+        // Fetch data on page load
+        window.onload = fetchResponses;
+    </script>
+</body>
+</html>
