@@ -1,46 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Responses</title>
-</head>
-<body>
-    <h1>Form Responses</h1>
-    
-    <!-- Password protection -->
-    <script>
-        var password = prompt("Please enter the password to view the responses:");
-        var correctPassword = "yourPasswordHere"; // Set your password here
+    <script src="./scripts/theme-toggle.js" defer></script>
 
-        if(password !== correctPassword) {
-            alert("Incorrect password. You cannot view the responses.");
-            window.location = "https://mellowdramatized.github.io/FREELANCE-FINAL-PROJECT/"; // Redirect to another page if password is wrong
-        } else {
-            displayResponses();
+    <style>
+        /* Basic styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
         }
 
-        function displayResponses() {
-            var table = document.createElement("table");
-            table.border = "1";
-            var headerRow = table.insertRow();
-            headerRow.insertCell(0).textContent = "Timestamp";
-            headerRow.insertCell(1).textContent = "Email";
-            headerRow.insertCell(2).textContent = "First Name";
-            headerRow.insertCell(3).textContent = "Last Name";
-            headerRow.insertCell(4).textContent = "Message";
-            headerRow.insertCell(5).textContent = "Date";
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #444;
+        }
 
-            // Loop through the responses data and create a row for each
-            for (var i = 1; i < responses.length; i++) {
-                var row = table.insertRow();
-                for (var j = 0; j < responses[i].length; j++) {
-                    row.insertCell(j).textContent = responses[i][j];
-                }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Progress bar styles */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            height: 5px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 5px;
+            background-color: #007BFF;
+            transition: width 0.3s;
+        }
+
+        /* Password prompt style */
+        #passwordPrompt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #passwordPrompt input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 50%;
+            max-width: 300px;
+        }
+
+        #passwordPrompt button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #passwordPrompt button:hover {
+            background-color: #0056b3;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body[data-theme='dark'] {
+            background-color: #1a1a2e;
+            color: #ccc;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        body[data-theme='dark'] header {
+            background: #222;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        .posts article {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        body[data-theme='dark'] .posts article {
+            background: #333;
+            border-color: #555;
+        }
+
+        .posts a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        body[data-theme='dark'] .posts a {
+            color: #80bfff;
+        }
+
+        .posts a:hover {
+            color: #007BFF;
+        }
+
+        body[data-theme='dark'] .posts a:hover {
+            color: #66ccff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #fff;
+            margin-top: 1rem;
+        }
+
+        body[data-theme='dark'] footer {
+            background: #222;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="passwordPrompt">
+        <h2>Enter fPassword</h2>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="validatePassword()">Submit</button>
+    </div>
+    <h1>Post Title 3</h1>
+    <nav>
+        <a href="../index.html">Back to Blog</a>
+    </nav>
+    <button id="theme-toggle">Toggle Theme</button>
+
+    </header>
+
+    <div id="responsesContainer" class="container" style="display: none;">
+        <h1>Form Responses</h1>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <table id="responsesTable">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+        <li><a href="contact.html">Contact</a></li>
+
+    </footer>
+
+    <script>
+        const correctPassword = "141"; // Replace with your password
+
+        // Validate the password
+        function validatePassword() {
+            const inputPassword = document.getElementById("password").value;
+            if (inputPassword === correctPassword) {
+                document.getElementById("passwordPrompt").style.display = "none";
+                document.getElementById("responsesContainer").style.display = "block";
+                loadResponses();
+            } else {
+                alert("Incorrect password.");
             }
+        }
 
-            document.body.appendChild(table);  // Append the table to the body
+        // Dynamically track progress while fetching responses
+        function loadResponses() {
+            const url = "https://script.google.com/macros/s/AKfycbwCzKdChowTJRrW1S63PVfkzhhawKYth9jMs4t2hw5TUtBRVYpc_l0G8mAMt56hlcM/exec"; // Replace with your web app URL
+            const progressBar = document.getElementById("progressBar");
+            const tableBody = document.getElementById("responsesTable").querySelector("tbody");
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const total = data.length; // Total number of responses
+                    let progress = 0;
+
+                    tableBody.innerHTML = ""; // Clear existing rows
+                    data.forEach((item, index) => {
+                        const row = tableBody.insertRow();
+                        Object.values(item).forEach(value => {
+                            const cell = row.insertCell();
+                            cell.textContent = value;
+                        });
+
+                        // Update progress bar
+                        progress = Math.round(((index + 1) / total) * 100);
+                        progressBar.style.width = progress + "%";
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching responses:", error);
+                    alert("Failed to load responses. Please try again.");
+                });
         }
     </script>
 </body>
+
 </html>
