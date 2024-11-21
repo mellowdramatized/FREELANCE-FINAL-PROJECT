@@ -4,66 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Responses</title>
-    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Form Responses</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <table id="responses-table">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Message</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Responses will be dynamically inserted here -->
-            </tbody>
-        </table>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
-    </footer>
+    <h1>Form Responses</h1>
+    
+    <!-- Password protection -->
     <script>
-        const dataUrl = 'https://script.google.com/macros/s/AKfycbw0DWRtVwYD3wd7LxhzneuufEOCpx9tznZUdWFf38NzJGqD0cjSmKw6xyg-gnPTCuhTQg/exec';
+        var password = prompt("Please enter the password to view the responses:");
+        var correctPassword = "yourPasswordHere"; // Set your password here
 
-        async function fetchResponses() {
-            try {
-                const response = await fetch(dataUrl);
-                const data = await response.json();
-
-                // Populate table
-                const tableBody = document.querySelector('#responses-table tbody');
-                tableBody.innerHTML = ''; // Clear previous data if any
-
-                data.forEach(row => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${row.Email}</td>
-                        <td>${row.FirstName}</td>
-                        <td>${row.LastName}</td>
-                        <td>${row.Message}</td>
-                        <td>${row.Date}</td>
-                    `;
-                    tableBody.appendChild(tr);
-                });
-            } catch (error) {
-                console.error('Error fetching responses:', error);
-            }
+        if(password !== correctPassword) {
+            alert("Incorrect password. You cannot view the responses.");
+            window.location = "https://mellowdramatized.github.io/FREELANCE-FINAL-PROJECT/"; // Redirect to another page if password is wrong
+        } else {
+            displayResponses();
         }
 
-        // Fetch data on page load
-        window.onload = fetchResponses;
+        function displayResponses() {
+            var table = document.createElement("table");
+            table.border = "1";
+            var headerRow = table.insertRow();
+            headerRow.insertCell(0).textContent = "Timestamp";
+            headerRow.insertCell(1).textContent = "Email";
+            headerRow.insertCell(2).textContent = "First Name";
+            headerRow.insertCell(3).textContent = "Last Name";
+            headerRow.insertCell(4).textContent = "Message";
+            headerRow.insertCell(5).textContent = "Date";
+
+            // Loop through the responses data and create a row for each
+            for (var i = 1; i < responses.length; i++) {
+                var row = table.insertRow();
+                for (var j = 0; j < responses[i].length; j++) {
+                    row.insertCell(j).textContent = responses[i][j];
+                }
+            }
+
+            document.body.appendChild(table);  // Append the table to the body
+        }
     </script>
 </body>
 </html>
