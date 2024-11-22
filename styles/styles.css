@@ -245,3 +245,8 @@ footer {
 body[data-theme='dark'] footer {
     background: #222;
 }
+img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover; /* Ensures images are cropped properly if aspect ratios differ */
+}
