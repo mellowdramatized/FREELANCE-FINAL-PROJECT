@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,43 +14,57 @@ body[data-theme='dark'] {
     color: #ccc;
 }
 
+/* Header */
 header {
-    background: #333;
+    background: linear-gradient(90deg, #007BFF, #0056b3);
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
-}
-
-body[data-theme='dark'] header {
-    background: #222;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5rem;
 }
 
+body[data-theme='dark'] header {
+    background: linear-gradient(90deg, #444, #222);
+}
+
+/* Main content */
 main {
-    padding: 1rem;
+    padding: 2rem;
 }
 
+/* Card styling */
 .posts article {
-    margin: 1rem 0;
-    padding: 1rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
     background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: background-color 0.3s, border-color 0.3s;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.posts article:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 body[data-theme='dark'] .posts article {
-    background: #333;
-    border-color: #555;
+    background: #2a2a2a;
+    border-color: #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+/* Links */
 .posts a {
     text-decoration: none;
-    color: #333;
+    color: #007BFF;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 body[data-theme='dark'] .posts a {
@@ -57,60 +72,51 @@ body[data-theme='dark'] .posts a {
 }
 
 .posts a:hover {
-    color: #007BFF;
+    color: #0056b3;
 }
 
-body[data-theme='dark'] .posts a:hover {
-    color: #66ccff;
-}
-
+/* Footer */
 footer {
     text-align: center;
-    padding: 1rem;
-    background: #333;
+    padding: 1.5rem;
+    background: #007BFF;
     color: #fff;
-    margin-top: 1rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 
 body[data-theme='dark'] footer {
     background: #222;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #007BFF;
+    color: white;
+    transition: background-color 0.3s;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #444;
+button:hover {
+    background: #0056b3;
 }
 
-.container {
-    width: 90%;
-    margin: 20px auto;
-}
-
+/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-}
-
-table,
-th,
-td {
-    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 th,
 td {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
+    border: 1px solid #ddd;
 }
 
 th {
@@ -122,7 +128,11 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Progress bar styles */
+body[data-theme='dark'] tr:nth-child(even) {
+    background-color: #333;
+}
+
+/* Progress bar */
 .progress-container {
     width: 100%;
     background-color: #e0e0e0;
@@ -137,116 +147,28 @@ tr:nth-child(even) {
     transition: width 0.3s;
 }
 
-/* Password prompt style */
-#passwordPrompt {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-#passwordPrompt input {
-    padding: 10px;
-    font-size: 16px;
-    margin: 10px 0;
-    width: 50%;
-    max-width: 300px;
-}
-
-#passwordPrompt button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#passwordPrompt button:hover {
-    background-color: #0056b3;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f9;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-body[data-theme='dark'] {
-    background-color: #1a1a2e;
-    color: #ccc;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-body[data-theme='dark'] header {
-    background: #222;
-}
-
-header h1 {
-    margin: 0;
-}
-
-main {
-    padding: 1rem;
-}
-
-.posts article {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-body[data-theme='dark'] .posts article {
-    background: #333;
-    border-color: #555;
-}
-
-.posts a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-body[data-theme='dark'] .posts a {
-    color: #80bfff;
-}
-
-.posts a:hover {
-    color: #007BFF;
-}
-
-body[data-theme='dark'] .posts a:hover {
-    color: #66ccff;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #333;
-    color: #fff;
-    margin-top: 1rem;
-}
-
-body[data-theme='dark'] footer {
-    background: #222;
-}
+/* Image styling */
 img {
-    width: 600px;
-    height: 400px;
-    object-fit: cover; /* Ensures images are cropped properly if aspect ratios differ */
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    #passwordPrompt input {
+        width: 80%;
+    }
 }

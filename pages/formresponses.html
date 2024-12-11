@@ -7,7 +7,7 @@
     <title>Form Responses</title>
     <link rel="stylesheet" href="../styles/styles.css">
 
-    <script src="./scripts/theme-toggle.js" defer></script>
+    <script src="../scripts/theme-toggle.js" defer></script>
 
     <style>
         /* Basic styles for the page */
@@ -55,18 +55,32 @@
     </footer>
 
     <script>
-        const correctPassword = "141"; // Replace with your password
+        const correctPasswordHash = "d50aeb7d43990d8b6dc2dd3f0043b7254e03d559585b7cf357daacd655b68a1b"; // Replace with the actual hash
 
-        // Validate the password
-        function validatePassword() {
+        // Function to validate the password
+        async function validatePassword() {
             const inputPassword = document.getElementById("password").value;
-            if (inputPassword === correctPassword) {
+            const hash = await hashPassword(inputPassword); // Hash the input password
+            //TODO
+            if (hash === correctPasswordHash) {
                 document.getElementById("passwordPrompt").style.display = "none";
                 document.getElementById("responsesContainer").style.display = "block";
                 loadResponses();
             } else {
                 alert("Incorrect password.");
+
             }
+        }
+
+        // Function to hash the password using SHA-256
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data); // Hash the password
+            const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert the buffer to an array
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
+            alert("HashHex Password is " + hashHex);
+            return hashHex;
         }
 
         // Dynamically track progress while fetching responses
@@ -100,6 +114,7 @@
                 });
         }
     </script>
+
 </body>
 
 </html>
