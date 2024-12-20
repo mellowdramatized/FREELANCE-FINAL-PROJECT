@@ -10,8 +10,164 @@
     <script src="../scripts/theme-toggle.js" defer></script>
 
     <style>
-        /* Basic styles for the page */
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+    
+        body[data-theme='dark'] {
+            background-color: #1a1a2e;
+            color: #ccc;
+        }
+    
+        /* Password prompt styling */
+        #passwordPrompt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    
+        #passwordPrompt h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+    
+        #passwordPrompt input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+        }
+    
+        #passwordPrompt button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        #passwordPrompt button:hover {
+            background: #0056b3;
+        }
+    
+        /* Navigation link */
+        nav a {
+            display: inline-block;
+            margin: 20px;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    
+        nav a:hover {
+            color: #0056b3;
+        }
+    
+        /* Main container styling */
+        .container {
+            padding: 20px;
+            margin: auto;
+            max-width: 1200px;
+        }
+    
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+    
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        body[data-theme='dark'] tr:nth-child(even) {
+            background-color: #333;
+        }
+    
+        body[data-theme='dark'] th {
+            background-color: #444;
+        }
+    
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            height: 5px;
+            margin: 20px 0;
+        }
+    
+        .progress-bar {
+            width: 0;
+            height: 5px;
+            background-color: #007BFF;
+            transition: width 0.3s;
+        }
+    
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #007BFF;
+            color: white;
+        }
+    
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    
+        footer a:hover {
+            text-decoration: underline;
+        }
+    
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #passwordPrompt input {
+                width: 100%;
+            }
+    
+            th,
+            td {
+                font-size: 14px;
+            }
+        }
     </style>
+    
 </head>
 
 <body>
@@ -79,7 +235,6 @@
             const hashBuffer = await crypto.subtle.digest('SHA-256', data); // Hash the password
             const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert the buffer to an array
             const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
-            alert("HashHex Password is " + hashHex);
             return hashHex;
         }
 

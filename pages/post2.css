@@ -1,0 +1,129 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.8;
+    transition: all 0.3s ease-in-out;
+}
+
+body[data-theme='dark'] {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #4caf50, #357a38);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-container p {
+    font-size: 1.2rem;
+    margin-top: 0;
+    font-style: italic;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 1.5rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #c8e6c9;
+}
+
+nav .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    background-color: #357a38;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+nav .btn:hover {
+    background-color: #285b2f;
+}
+
+/* Main Content */
+article {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 1.5rem;
+}
+
+article h2 {
+    color: #4caf50;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+    margin: 0 0.5rem;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 1rem;
+    }
+
+    .header-container h1 {
+        font-size: 2rem;
+    }
+
+    article {
+        padding: 1.5rem;
+    }
+}
