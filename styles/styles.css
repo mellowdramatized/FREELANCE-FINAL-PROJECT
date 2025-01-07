@@ -274,3 +274,70 @@ body[data-theme='dark'] #theme-toggle {
 #theme-toggle:hover {
     background-color: #444;
 }
+@media (max-width: 1024px) {
+    header {
+        padding: 1.5rem 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    main {
+        max-width: 90%;
+        padding: 1rem;
+    }
+
+    footer nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        text-align: left;
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    footer {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #theme-toggle {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    main {
+        padding: 0.8rem;
+    }
+}
