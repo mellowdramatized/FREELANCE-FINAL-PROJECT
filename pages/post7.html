@@ -1,28 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Title 7</title>
+    <title>HTML Elements Demo</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="./scripts/theme-toggle.js" defer></script>
-
+    <script src="../scripts/theme-toggle.js" defer></script>
 </head>
+
 <body>
     <header>
-        <h1>Post Title 7</h1>
+        <h1>HTML Elements Demo</h1>
         <nav>
             <a href="../index.html">Back to Blog</a>
         </nav>
         <button id="theme-toggle">Toggle Theme</button>
-
     </header>
     <main>
+        <p>
+            The demo page showcases a variety of fundamental HTML elements, each serving a distinct purpose in web
+            development.
+            Form elements like text inputs, email fields, and text areas are integral for collecting user data, while
+            sliders and
+            dropdown menus enhance interactivity by allowing users to adjust values or make selections with ease. The
+            progress
+            bar visually communicates task completion, and checkboxes and radio buttons offer multiple and single-choice
+            options, respectively.
+            Ordered and unordered lists structure content in a readable hierarchy, and tables effectively present
+            tabular data. Together, these
+            elements form the building blocks of modern web design, ensuring accessibility and user engagement.
+        </p>
         <article>
-            <p>This is the content of the seventh blog post. Let your ideas shine!</p>
+            <h2>Interactive HTML Elements</h2>
+            <p>Explore a variety of basic HTML elements below:</p>
+
+            <!-- Input Fields -->
+            <section>
+                <h3>Form Elements</h3>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Write your message"></textarea>
+
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </section>
+
+            <!-- Slider -->
+            <section>
+                <h3>Range Slider</h3>
+                <label for="range-slider">Adjust the value:</label>
+                <input type="range" id="range-slider" min="0" max="100" value="50"
+                    oninput="document.getElementById('slider-value').innerText = this.value;">
+                <p>Value: <span id="slider-value">50</span></p>
+            </section>
+
+            <!-- Select Dropdown -->
+            <section>
+                <h3>Dropdown Menu</h3>
+                <label for="dropdown">Choose an option:</label>
+                <select id="dropdown">
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            </section>
+
+            <!-- Progress Bar -->
+            <section>
+                <h3>Progress Bar</h3>
+                <label for="progress">Task Completion:</label>
+                <progress id="progress" value="70" max="100"></progress>
+                <p>70% Complete</p>
+            </section>
+
+            <!-- Checkbox & Radio Buttons -->
+            <section>
+                <h3>Checkboxes and Radio Buttons</h3>
+                <p>Choose your preferences:</p>
+                <div>
+                    <input type="checkbox" id="check1" name="feature" value="Feature1">
+                    <label for="check1">Feature 1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="check2" name="feature" value="Feature2">
+                    <label for="check2">Feature 2</label>
+                </div>
+                <p>Select your favorite option:</p>
+                <div>
+                    <input type="radio" id="radio1" name="option" value="Option1">
+                    <label for="radio1">Option 1</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio2" name="option" value="Option2">
+                    <label for="radio2">Option 2</label>
+                </div>
+            </section>
+
+            <!-- List -->
+            <section>
+                <h3>Lists</h3>
+                <h4>Ordered List</h4>
+                <ol>
+                    <li>Step 1: Open the editor.</li>
+                    <li>Step 2: Write your code.</li>
+                    <li>Step 3: Save and test.</li>
+                </ol>
+                <h4>Unordered List</h4>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </section>
+
+            <!-- Table -->
+            <section>
+                <h3>Table</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Interactive Slider</td>
+                            <td>Adjust values using a range slider.</td>
+                        </tr>
+                        <tr>
+                            <td>Checkbox</td>
+                            <td>Select multiple options.</td>
+                        </tr>
+                        <tr>
+                            <td>Progress Bar</td>
+                            <td>Visualize task completion.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
         </article>
+
+        <p>
+            For a deeper dive into how these elements integrate into a fully functional website, check out the complete
+            project on
+            <a href="https://github.com/mellowdramatized/FREELANCE-FINAL-PROJECT/blob/main/index.html"
+                target="_blank">GitHub</a>.
+            This project demonstrates how these components come together to create a cohesive and interactive user
+            experience.
+        </p>
     </main>
     <script src="../scripts/footer.js"></script>
-
 </body>
+
 </html>
